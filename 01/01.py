@@ -1,0 +1,1 @@
+print(sum([int(x.strip()) // 3 - 2 for x in open('input')]))
