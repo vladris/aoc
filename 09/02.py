@@ -11,12 +11,6 @@ def test(numbers, input, output):
 
     adjust = lambda m: rel if m == 2 else 0
 
-    def assign(mode, i, val):
-        if mode == 0:
-            numbers[numbers[i]] = val
-        elif mode == 2:
-            numbers[rel + numbers[i]] = val
-
     while numbers[i] != 99:
         opcode = numbers[i] % 100
         m1, m2, m3 = numbers[i] // 100 % 10, numbers[i] // 1000 % 10, numbers[i] // 10000 % 10
