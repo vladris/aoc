@@ -9,7 +9,7 @@ def cut(a, b, n, c):
 def deal(a, b, n, d):
     return a * d % n, b * d % n
 
-i, n, e = 2019, 119315717514047, 101741582076661
+n, e = 119315717514047, 101741582076661
 
 def shuffle_eq(eq, n, shuffles):
     for shuffle in shuffles:
