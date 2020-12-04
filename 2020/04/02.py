@@ -18,7 +18,10 @@ for passport in passports:
         "cid": lambda cid: False # Ignore
     }
 
-    if sum(map(lambda fld: validation[fld[0]](fld[1]), fields)) == 7:
-        valid += 1
+    try:
+        if sum(map(lambda fld: validation[fld[0]](fld[1]), fields)) == 7:
+            valid += 1
+    except:
+        pass
 
 print(valid)
