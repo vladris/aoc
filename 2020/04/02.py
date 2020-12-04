@@ -6,9 +6,6 @@ valid = 0
 for passport in passports:
     fields = list(map(lambda fld: (fld[:3], fld[4:]), passport.replace('\n', ' ').split(' ')))
 
-    if { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" } - set(map(lambda fld: fld[0], fields)):
-        continue
-
     validation = {
         "byr": lambda byr: 1920 <= int(byr) and int(byr) <= 2002,
         "iyr": lambda iyr: 2010 <= int(iyr) and int(iyr) <= 2020,
@@ -18,13 +15,10 @@ for passport in passports:
         "hcl": lambda hcl: hcl[0] == '#' and int(hcl[1:], 16) != -1,
         "ecl": lambda ecl: ecl in { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" },
         "pid": lambda pid: len(pid) == 9 and int(pid) != -1,
-        "cid": lambda cid: True
+        "cid": lambda cid: False # Ignore
     }
 
-    try:
-        if reduce(lambda a, b: a and b, map(lambda fld: validation[fld[0]](fld[1]), fields), True):
-            valid += 1
-    except:
-        pass
+    if sum(map(lambda fld: validation[fld[0]](fld[1]), fields)) == 7:
+        valid += 1
 
 print(valid)
