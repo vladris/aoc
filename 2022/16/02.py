@@ -34,13 +34,14 @@ def search(me=('AA', 0), elephant=('AA', 0), opened=set(), time=26, score=0):
 
     if score > best:
         best = score
+        print(best, len(cache))
 
     key = str(me) + str(elephant) + str(time)
     if key in cache:
         if cache[key] > score:
             return
-    else:
-        cache[key] = score
+
+    cache[key] = score
 
     for node in to_open - opened:
         me_next, elephant_next, score_next = me, elephant, score
