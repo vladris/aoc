@@ -37,7 +37,7 @@ def search(me=('AA', 0), elephant=('AA', 0), opened=set(), time=26, score=0):
 
     key = str(me) + str(elephant) + str(time)
     if key in cache:
-        if cache[key] > score:
+        if cache[key] >= score:
             return
 
     cache[key] = score
