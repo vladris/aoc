@@ -7,7 +7,7 @@ dirs = [int(d) if str.isdecimal(d) else d for d in dirs]
 size = 50
 facing = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
-conns = {
+connections = {
     (1, 0): [(2, 0, 0), (1, 1, 1), (0, 2, 0), (0, 3, 0)],
     (2, 0): [(1, 2, 2), (1, 1, 2), (1, 0, 2), (0, 3, 3)],
     (1, 1): [(2, 0, 3), (1, 2, 1), (0, 2, 1), (1, 0, 3)],
@@ -19,16 +19,12 @@ conns = {
 x, y, d = grid[0].index('.'), 0, 0
 
 
-def region(x, y):
-    return x // size, y // size
-
-
 def move(x, y, d):
     nx = x + facing[d][0]
     ny = y + facing[d][1]
     nd = d
 
-    if region(x, y) != region(nx, ny):
+    if (x // size, y // size) != (nx // size, ny // size):
         nx, ny, nd = switch_region(x, y, d)
 
     match grid[ny][nx]:
@@ -37,8 +33,7 @@ def move(x, y, d):
 
 
 def switch_region(x, y, d):
-    r = region(x, y)
-    nrx, nry, nd = conns[(r[0], r[1])][d]
+    nrx, nry, nd = connections[(x // size, y // size)][d]
     nx, ny = nrx * size, nry * size
     rx, ry = x % size, y % size
 
