@@ -10,7 +10,6 @@ def hash(seq):
 
 
 for seq in seqs:
-    #print(boxes)
     if '=' in seq:
         k, v = seq.split('=')
         box = boxes[hash(k)]
