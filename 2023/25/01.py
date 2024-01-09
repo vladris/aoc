@@ -21,7 +21,6 @@ def most_connected(visited):
     return best_n
 
 
-
 def find_components():
     start = list(graph.keys())[0]
     visited = {start}
