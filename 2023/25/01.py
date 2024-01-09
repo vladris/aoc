@@ -8,7 +8,7 @@ for k in dict(graph):
         graph[v].add(k)
 
 
-def most_connected(n, visited):
+def most_connected(visited):
     best_n, best_d = None, 0
     for n in graph:
         if n in visited:
@@ -33,7 +33,7 @@ def find_components():
         if total == 3:
             return visited
 
-        n = most_connected(start, visited)
+        n = most_connected(visited)
         visited.add(n)
 
 
