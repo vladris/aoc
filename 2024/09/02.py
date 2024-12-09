@@ -12,14 +12,12 @@ while end > 0:
 
         if disk[start][1] > disk[end][1]:
             disk = disk[:start] + [disk[end]] + [(None, disk[start][1] - disk[end][1])] + disk[start + 1:end] + [(None, disk[end][1])] + disk[end + 1:]
-            end -= 1
             break;
         elif disk[start][1] == disk[end][1]:
             disk = disk[:start] + [disk[end]] + disk[start + 1:end] + [disk[start]] + disk[end + 1:]
-            end -= 1
             break
-    else:
-        end -= 1
+
+    end -= 1
 
 
 i, total = 0, 0
