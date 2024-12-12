@@ -35,22 +35,22 @@ def area(i, j):
     visited.add((i, j))
     result_a, result_c = 1, corners(i, j)
 
-    if i > 0 and grid[i - 1][j] == grid[i][j]:
+    if grid[i - 1][j] == grid[i][j]:
         a, c = area(i - 1, j)
         result_a += a
         result_c += c
 
-    if i < len(grid) - 1 and grid[i + 1][j] == grid[i][j]:
+    if grid[i + 1][j] == grid[i][j]:
         a, c = area(i + 1, j)
         result_a += a
         result_c += c
 
-    if j > 0 and grid[i][j - 1] == grid[i][j]:
+    if grid[i][j - 1] == grid[i][j]:
         a, c = area(i, j - 1)
         result_a += a
         result_c += c
 
-    if j < len(grid[0]) - 1 and grid[i][j + 1] == grid[i][j]:
+    if grid[i][j + 1] == grid[i][j]:
         a, c = area(i, j + 1)
         result_a += a
         result_c += c
@@ -62,12 +62,6 @@ total = 0
 for i in range(1, len(grid) - 1):
     for j in range(1, len(grid[0]) - 1):
         a, c = area(i, j)
-        if a != 0 and c != 0:
-            print(f"{i}, {j}: {a}, {c}")
         total += a * c
 
 print(total)
-
-
-# Too low: 942304
-# Still too low: 953682
