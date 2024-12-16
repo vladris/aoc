@@ -23,22 +23,17 @@ def do_move(i, j, d):
     elif grid[i][j] == "[":
         do_move(i + d, j, d)
         do_move(i + d, j + 1, d)
-        grid[i + d][j] = "["
-        grid[i + d][j + 1] = "]"
-        grid[i][j] = "."
-        grid[i][j + 1] = "."
+        grid[i + d][j], grid[i + d][j + 1] = "[", "]"
+        grid[i][j], grid[i][j + 1] = ".", "."
     elif grid[i][j] == "]":
         do_move(i + d, j - 1, d)
         do_move(i + d, j, d)
-        grid[i + d][j] = "]"
-        grid[i + d][j - 1] = "["
-        grid[i][j] = "."
-        grid[i][j - 1] = "."
+        grid[i + d][j - 1], grid[i + d][j] = "[", "]"
+        grid[i][j - 1], grid[i][j] = ".", "."
     elif grid[i][j] == "@":
         do_move(i + d, j, d)
         grid[i + d][j] = "@"
         grid[i][j] = "."
-
 
 
 for move in moves:
